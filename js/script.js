@@ -34,25 +34,30 @@ function leftClick(){
     for(var i = 0; i<book.length; i++){
         if(book[i].style.left=='-160px'){
             //move left most book to right most book
-            book[i].style.left = '130px';
+            book[i].style.left = '160px';
         }else if(book[i].style.left=='-80px'){
             //move center left book to most left book
-            book[i].style.transform = 'scale(0.4)';
+            //book[i].style.transform = 'scale(0.4)';
+            book[i].style.height = "80px";
+            book[i].style.width = "80px";
             book[i].style.left = '-160px';
             book[i].style.zIndex = '1';
         }else if(book[i].style.left=='0px'){
             //move center book to center left book
             book[i].style.zIndex = '2';
-            book[i].style.transform = 'scale(0.5)';
             book[i].style.left = '-80px';
         }else if(book[i].style.left=='80px'){
             //move center rigt book to center book
-            book[i].style.transform = 'scale(0.6)';
+            //book[i].style.transform = 'scale(0.6)';
+            book[i].style.height = "120px";
+            book[i].style.width = "120px";
             book[i].style.left = '0px';
             book[i].style.zIndex = '3';
-        }else if(book[i].style.left=='130px'){
+        }else if(book[i].style.left=='160px'){
             //move rigt most book to center right book
-            book[i].style.transform = 'scale(0.5)';
+            //book[i].style.transform = 'scale(0.5)';
+            book[i].style.height = "100px";
+            book[i].style.width = "100px";
             book[i].style.left = '80px';
             book[i].style.zIndex = '2';
         }
@@ -68,27 +73,38 @@ function rightClick(){
     for(var i = 0; i<book.length; i++){
         if(book[i].style.left=='-160px'){
             //move left most book to center left book
-            book[i].style.transform = 'scale(0.5)';
+            //book[i].style.transform = 'scale(0.5)';
+            book[i].style.height = "100px";
+            book[i].style.width = "100px";
             book[i].style.left = '-80px';
             book[i].style.zIndex = '2';
+
         }else if(book[i].style.left=='-80px'){
             //move center left book to center book
-            book[i].style.transform = 'scale(0.6)';
+            //book[i].style.transform = 'scale(0.6)';
+            book[i].style.height = "120px";
+            book[i].style.width = "120px";
             book[i].style.left = '0px';
             book[i].style.zIndex = '3';
         }else if(book[i].style.left=='0px'){
             //move center book to center right book
             book[i].style.zIndex = '2';
-            book[i].style.transform = 'scale(0.5)';
+            //book[i].style.transform = 'scale(0.5)';
+            book[i].style.height = "100px";
+            book[i].style.width = "100px";
             book[i].style.left = '80px';
         }else if(book[i].style.left=='80px'){
             //move center rigt book to right most book
-            book[i].style.transform = 'scale(0.4)';
-            book[i].style.left = '130px';
+            //book[i].style.transform = 'scale(0.4)';
+            book[i].style.height = "80px";
+            book[i].style.width = "80px";
+            book[i].style.left = '160px';
             book[i].style.zIndex = '1';
-        }else if(book[i].style.left=='130px'){
+        }else if(book[i].style.left=='160px'){
             //move center right book to right most book
-            book[i].style.transform = 'scale(0.4)';
+            //book[i].style.transform = 'scale(0.4)';
+            book[i].style.height = "80px";
+            book[i].style.width = "80px";
             book[i].style.left = '-160px';
             book[i].style.zIndex = '1';
         }
@@ -142,6 +158,7 @@ app.playAnimation = function(){
                     clearInterval(autoplay);
                 }
             },500);
+
     },5500);
 }
 
@@ -151,30 +168,40 @@ app.initCarousel = function(){
         var newBook = document.createElement('div');
         newBook.classList.add('book');
         //add new image with each iteration
-        newBook.style.background = 'url(' + './img/' + i + '.jpg' + ') no-repeat center center';
+        newBook.style.backgroundImage = 'url(' + './img/' + i + '.jpg' + ')';
         newBook.style.opacity = 1;
             if(i == 0){
                 //left image
-                newBook.style.transform = 'scale(' + 0.4 + ')';
+                //newBook.style.transform = 'scale(' + 0.4 + ')';
+                newBook.style.height = "80px";
+                newBook.style.width = "80px";
                 newBook.style.left = -160 + "px";
             }else if(i == 1){
                 //center left image
-                newBook.style.transform = 'scale(' + 0.5 + ')';
+                //newBook.style.transform = 'scale(' + 0.5 + ')';
+                newBook.style.height = "100px";
+                newBook.style.width = "100px";
                 newBook.style.left = -80 + "px";
             }else if(i == 2){
                 //center image
-                newBook.style.transform = 'scale(' + 0.6 + ') ';
+                //newBook.style.transform = 'scale(' + 0.6 + ') ';
+                newBook.style.height = "120px";
+                newBook.style.width = "120px";
                 newBook.style.left = 0 + "px";
                 newBook.style.zIndex = 3;
             }else if(i == 3){
                 //center right image
-                newBook.style.transform = 'scale(' + 0.5 + ') ';
+                //newBook.style.transform = 'scale(' + 0.5 + ') ';
+                newBook.style.height = "100px";
+                newBook.style.width = "100px";
                 newBook.style.left = 80 + "px";
                 newBook.style.zIndex = 2;
             }else if(i == 4){
                 //right image
-                newBook.style.transform = 'scale(' + 0.4 + ') ';
-                newBook.style.left = 130 + "px";
+                //newBook.style.transform = 'scale(' + 0.4 + ') ';
+                newBook.style.height = "80px";
+                newBook.style.width = "80px";
+                newBook.style.left = 160 + "px";
             }
 
         app.dom.carousel.appendChild(newBook);
