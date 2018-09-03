@@ -25,80 +25,84 @@ app.initDom = function(){
 
 }
 
-app.initListeners = function(){
-
-    //moves carousel left once on click
-    app.dom.arrowLeft.addEventListener('click', function(){
-        console.log('moving left');
-        //get appended books in a nodelist
-        //book are listed from left to right
-        var book = document.querySelectorAll('.book');
-        for(var i = 0; i<book.length; i++){
-            if(book[i].style.left=='-160px'){
-                //move left most book to right most book
-                book[i].style.left = '130px';
-            }else if(book[i].style.left=='-80px'){
-                //move center left book to most left book
-                book[i].style.transform = 'scale(0.4)';
-                book[i].style.left = '-160px';
-                book[i].style.zIndex = '1';
-            }else if(book[i].style.left=='0px'){
-                //move center book to center left book
-                book[i].style.zIndex = '2';
-                book[i].style.transform = 'scale(0.5)';
-                book[i].style.left = '-80px';
-            }else if(book[i].style.left=='80px'){
-                //move center rigt book to center book
-                book[i].style.transform = 'scale(0.6)';
-                book[i].style.left = '0px';
-                book[i].style.zIndex = '3';
-            }else if(book[i].style.left=='130px'){
-                //move rigt most book to center right book
-                book[i].style.transform = 'scale(0.5)';
-                book[i].style.left = '80px';
-                book[i].style.zIndex = '2';
-            }
-
+function leftClick(){
+    var book = document.querySelectorAll('.book');
+    console.log('moving left');
+    //get appended books in a nodelist
+    //book are listed from left to right
+    var book = document.querySelectorAll('.book');
+    for(var i = 0; i<book.length; i++){
+        if(book[i].style.left=='-160px'){
+            //move left most book to right most book
+            book[i].style.left = '130px';
+        }else if(book[i].style.left=='-80px'){
+            //move center left book to most left book
+            book[i].style.transform = 'scale(0.4)';
+            book[i].style.left = '-160px';
+            book[i].style.zIndex = '1';
+        }else if(book[i].style.left=='0px'){
+            //move center book to center left book
+            book[i].style.zIndex = '2';
+            book[i].style.transform = 'scale(0.5)';
+            book[i].style.left = '-80px';
+        }else if(book[i].style.left=='80px'){
+            //move center rigt book to center book
+            book[i].style.transform = 'scale(0.6)';
+            book[i].style.left = '0px';
+            book[i].style.zIndex = '3';
+        }else if(book[i].style.left=='130px'){
+            //move rigt most book to center right book
+            book[i].style.transform = 'scale(0.5)';
+            book[i].style.left = '80px';
+            book[i].style.zIndex = '2';
         }
-    })
+
+    }
+}
+
+function rightClick(){
+    console.log('moving right');
+    //get appended books in a nodelist
+    //book are listed from left to right
+    var book = document.querySelectorAll('.book');
+    for(var i = 0; i<book.length; i++){
+        if(book[i].style.left=='-160px'){
+            //move left most book to center left book
+            book[i].style.transform = 'scale(0.5)';
+            book[i].style.left = '-80px';
+            book[i].style.zIndex = '2';
+        }else if(book[i].style.left=='-80px'){
+            //move center left book to center book
+            book[i].style.transform = 'scale(0.6)';
+            book[i].style.left = '0px';
+            book[i].style.zIndex = '3';
+        }else if(book[i].style.left=='0px'){
+            //move center book to center right book
+            book[i].style.zIndex = '2';
+            book[i].style.transform = 'scale(0.5)';
+            book[i].style.left = '80px';
+        }else if(book[i].style.left=='80px'){
+            //move center rigt book to right most book
+            book[i].style.transform = 'scale(0.4)';
+            book[i].style.left = '130px';
+            book[i].style.zIndex = '1';
+        }else if(book[i].style.left=='130px'){
+            //move center right book to right most book
+            book[i].style.transform = 'scale(0.4)';
+            book[i].style.left = '-160px';
+            book[i].style.zIndex = '1';
+        }
+
+    }
+}
+
+
+app.initListeners = function(){
+    //moves carousel left once on click
+    app.dom.arrowLeft.addEventListener('click', leftClick)
 
     //moves carousel right on clic
-    app.dom.arrowRight.addEventListener('click', function(){
-        console.log('moving right');
-        //get appended books in a nodelist
-        //book are listed from left to right
-        var book = document.querySelectorAll('.book');
-        for(var i = 0; i<book.length; i++){
-            if(book[i].style.left=='-160px'){
-                //move left most book to center left book
-                book[i].style.transform = 'scale(0.5)';
-                book[i].style.left = '-80px';
-                book[i].style.zIndex = '2';
-            }else if(book[i].style.left=='-80px'){
-                //move center left book to center book
-                book[i].style.transform = 'scale(0.6)';
-                book[i].style.left = '0px';
-                book[i].style.zIndex = '3';
-            }else if(book[i].style.left=='0px'){
-                //move center book to center right book
-                book[i].style.zIndex = '2';
-                book[i].style.transform = 'scale(0.5)';
-                book[i].style.left = '80px';
-            }else if(book[i].style.left=='80px'){
-                //move center rigt book to right most book
-                book[i].style.transform = 'scale(0.4)';
-                book[i].style.left = '130px';
-                book[i].style.zIndex = '1';
-            }else if(book[i].style.left=='130px'){
-                //move center right book to right most book
-                book[i].style.transform = 'scale(0.4)';
-                book[i].style.left = '-160px';
-                book[i].style.zIndex = '1';
-            }
-
-        }
-    })
-
+    app.dom.arrowRight.addEventListener('click', rightClick)
 }
 
 app.playAnimation = function(){
@@ -126,6 +130,19 @@ app.playAnimation = function(){
     setTimeout(function(){
             app.dom.frameTwo.style.opacity = 1;
     },5000);
+
+    //autoplay carousel
+    setTimeout(function(){
+            //autoplay carousel
+            var moveCounter = 0;
+            var autoplay = setInterval(function(){
+                moveCounter++
+                leftClick();
+                if(moveCounter == 5){
+                    clearInterval(autoplay);
+                }
+            },500);
+    },5500);
 }
 
 app.initCarousel = function(){
