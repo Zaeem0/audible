@@ -173,12 +173,14 @@ body{
     color: white;
     font-size: 14px;
     position: absolute;
-    bottom: 10%;
+    bottom: 11%;
+    width: 100%;
+    text-align: center;
     left:50%;
     transform: translateX(-50%);
 }
 
-.cta{
+.cta-idle{
     background-color: #ffb546;
     font-family: 'Arial';
     color: black;
@@ -188,6 +190,22 @@ body{
     position: absolute;
     bottom: 2%;
     left:50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) scaleY(1);
     transform-origin: center bottom;
+    transition: all 0.2s ease;
+}
+
+.cta-hover{
+    background-color: white;
+    font-family: 'Arial';
+    color:  #ffb546;
+    font-size: 14px;
+    border-radius: 5px;
+    padding:6px 21px;;
+    position: absolute;
+    bottom: 2%;
+    left:50%;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: center top;
+    transition: all 0.2s ease;
 }

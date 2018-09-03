@@ -21,7 +21,8 @@ app.initDom = function(){
     app.dom.arrowRight = document.querySelector('.arrow-right');
 
     //cta
-    app.dom.cta = document.querySelector('.cta');
+    app.dom.ctaIdle = document.querySelector('.cta-idle');
+    app.dom.ctaHover = document.querySelector('.cta-hover');
 
 }
 
@@ -115,10 +116,23 @@ function rightClick(){
 
 app.initListeners = function(){
     //moves carousel left once on click
-    app.dom.arrowLeft.addEventListener('click', leftClick)
+    app.dom.arrowLeft.addEventListener('click', leftClick);
 
     //moves carousel right on clic
-    app.dom.arrowRight.addEventListener('click', rightClick)
+    app.dom.arrowRight.addEventListener('click', rightClick);
+
+    //hover over cta
+    app.dom.frameTwo.addEventListener('mouseover', function(){
+        console.log('over');
+        console.log(app.dom.ctaIdle);
+        app.dom.ctaIdle.style.transform = "scaleY(0) translateX(-50%)";
+        app.dom.ctaHover.style.transform = "scaleY(1) translateX(-50%)";
+    });
+    app.dom.frameTwo.addEventListener('mouseout', function(){
+        console.log('out');
+        app.dom.ctaIdle.style.transform = "scaleY(1) translateX(-50%)";
+        app.dom.ctaHover.style.transform = "scaleY(0) translateX(-50%)";
+    });
 }
 
 app.playAnimation = function(){
