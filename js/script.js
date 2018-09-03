@@ -25,6 +25,45 @@ app.initDom = function(){
 
 }
 
+app.initListeners = function(){
+
+    //moves carousel left once on click
+    app.dom.arrowLeft.addEventListener('click', function(){
+        console.log('moving left');
+        //get appended books in a nodelist
+        //book are listed from left to right
+        var book = document.querySelectorAll('.book');
+        for(var i = 0; i<book.length; i++){
+            if(book[i].style.left=='-160px'){
+                //move left most book to right most book
+                book[i].style.left = '130px';
+            }else if(book[i].style.left=='-80px'){
+                //move center left book to most left book
+                book[i].style.transform = 'scale(0.4)';
+                book[i].style.left = '-160px';
+                book[i].style.zIndex = '1';
+            }else if(book[i].style.left=='0px'){
+                //move center book to center left book
+                book[i].style.zIndex = '2';
+                book[i].style.transform = 'scale(0.5)';
+                book[i].style.left = '-80px';
+            }else if(book[i].style.left=='80px'){
+                //move center rigt book to center book
+                book[i].style.transform = 'scale(0.6)';
+                book[i].style.left = '0px';
+                book[i].style.zIndex = '3';
+            }else if(book[i].style.left=='130px'){
+                //move rigt most book to center right book
+                book[i].style.transform = 'scale(0.5)';
+                book[i].style.left = '80px';
+                book[i].style.zIndex = '2';
+            }
+
+        }
+    })
+
+}
+
 app.playAnimation = function(){
 
     //fade in copy for frame one
@@ -53,13 +92,12 @@ app.playAnimation = function(){
 }
 
 app.initCarousel = function(){
-    var images = 5;
-    for(var i = 0; i<images; i++){
+    var numberOfImages = 5;
+    for(var i = 0; i<numberOfImages; i++){
         var newBook = document.createElement('div');
-        var imageURL = './img/' + i + '.jpg';
-
         newBook.classList.add('book');
-        newBook.style.background = 'url(' + imageURL + ') no-repeat center center';
+        //add new image with each iteration
+        newBook.style.background = 'url(' + './img/' + i + '.jpg' + ') no-repeat center center';
         newBook.style.opacity = 1;
             if(i == 0){
                 //left image
@@ -94,6 +132,7 @@ app.init = function(){
     app.initDom();
     app.playAnimation();
     app.initCarousel();
+    app.initListeners();
     console.log('init done');
 }
 

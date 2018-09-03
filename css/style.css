@@ -137,6 +137,7 @@ body{
     top: 0;
     right: 0;
     left: 0;
+    transition: all 0.5s ease;
 }
 
 .arrow{
