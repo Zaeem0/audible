@@ -62,6 +62,43 @@ app.initListeners = function(){
         }
     })
 
+    //moves carousel right on clic
+    app.dom.arrowRight.addEventListener('click', function(){
+        console.log('moving right');
+        //get appended books in a nodelist
+        //book are listed from left to right
+        var book = document.querySelectorAll('.book');
+        for(var i = 0; i<book.length; i++){
+            if(book[i].style.left=='-160px'){
+                //move left most book to center left book
+                book[i].style.transform = 'scale(0.5)';
+                book[i].style.left = '-80px';
+                book[i].style.zIndex = '2';
+            }else if(book[i].style.left=='-80px'){
+                //move center left book to center book
+                book[i].style.transform = 'scale(0.6)';
+                book[i].style.left = '0px';
+                book[i].style.zIndex = '3';
+            }else if(book[i].style.left=='0px'){
+                //move center book to center right book
+                book[i].style.zIndex = '2';
+                book[i].style.transform = 'scale(0.5)';
+                book[i].style.left = '80px';
+            }else if(book[i].style.left=='80px'){
+                //move center rigt book to right most book
+                book[i].style.transform = 'scale(0.4)';
+                book[i].style.left = '130px';
+                book[i].style.zIndex = '1';
+            }else if(book[i].style.left=='130px'){
+                //move center right book to right most book
+                book[i].style.transform = 'scale(0.4)';
+                book[i].style.left = '-160px';
+                book[i].style.zIndex = '1';
+            }
+
+        }
+    })
+
 }
 
 app.playAnimation = function(){
