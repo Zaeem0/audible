@@ -46,6 +46,8 @@ function leftClick(){
         }else if(book[i].style.left=='0px'){
             //move center book to center left book
             book[i].style.zIndex = '2';
+            book[i].style.height = "100px";
+            book[i].style.width = "100px";
             book[i].style.left = '-80px';
         }else if(book[i].style.left=='80px'){
             //move center rigt book to center book
